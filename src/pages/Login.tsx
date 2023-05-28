@@ -1,9 +1,43 @@
 import { EuiButton, EuiFlexGroup, EuiFlexItem, EuiImage, EuiPanel, EuiProvider, EuiSpacer, EuiText, EuiTextColor } from "@elastic/eui";
 import React from "react";
+import {useNavigate} from "react-router-dom"
 import animation from "../assets/animation.gif";
 import logo from "../assets/logo4.png";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { firebaseAuth, firebaseDB, userRef } from "../utilis/FirebaseConfig";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { useAppDispatch } from "../app/hooks";
+import { setUser } from "../app/slices/AuthSlice";
 
 function Login() {
+
+        const navigate = useNavigate();
+        const dispatch = useAppDispatch();
+
+        onAuthStateChanged(firebaseAuth, (currentUser) => {
+            if (currentUser) navigate("/");
+        });
+
+        const login = async () => {
+            const provider = new GoogleAuthProvider();
+            const {
+                user: { displayName, email, uid },
+              } = await signInWithPopup(firebaseAuth, provider);
+
+            if (email) {
+            const firestoreQuery = query(userRef, where("uid", "==", uid));
+            const fetchedUsers = await getDocs(firestoreQuery);
+            if (fetchedUsers.docs.length === 0) {
+                await addDoc(collection(firebaseDB, "users"), {
+                uid,
+                name: displayName,
+                email,
+                });
+            }
+            dispatch(setUser({ uid, email: email!, name: displayName! }));
+            navigate("/");
+            }
+    };
     return (
     <EuiProvider colorMode = "dark">
         <EuiFlexGroup alignItems="center" justifyContent="center" style={{ width: "100vw", height: "100vh" }}>
@@ -23,7 +57,7 @@ function Login() {
                         </h3>
                         </EuiText>
                         <EuiSpacer size="l" />
-                        <EuiButton fill onClick={Login}>
+                        <EuiButton fill onClick={login}>
                             Login with Google
                         </EuiButton>
                     </EuiFlexItem>
@@ -34,5 +68,6 @@ function Login() {
     </EuiProvider>
   );
 }
+
 
 export default Login;
