@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function CreateMeetingButtons({
   createMeeting,
-  // isEdit = false,
-  // closeFlyout,
+  isEdit = false,
+  closeFlyout,
 }: {
   createMeeting: () => void;
-  // isEdit?: boolean;
-  // closeFlyout?: () => {};
+  isEdit?: boolean;
+  closeFlyout?: () => {};
 })
 {
     const navigate = useNavigate();
@@ -18,14 +18,15 @@ export default function CreateMeetingButtons({
       <EuiFlexItem grow={false}>
         <EuiButton
           color="danger"
-          fill onClick={() =>navigate("/") }>
+          onClick={() =>(isEdit ? closeFlyout!() : navigate("/"))}
+          fill
+          >
             Cancel
         </EuiButton>
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
-      <EuiButton
-          fill onClick={createMeeting}>
-            Submit
+      <EuiButton type="submit" onClick={createMeeting} fill>
+          {isEdit ? "Edit Meeting" : "Create Meeting"}
         </EuiButton>
       </EuiFlexItem>
     </EuiFlexGroup>
