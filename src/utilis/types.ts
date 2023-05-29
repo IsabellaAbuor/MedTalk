@@ -1,8 +1,8 @@
-// export interface ToastType {
-//     id: string;
-//     title: string;
-//     color: "success" | "primary" | "warning" | "danger" | undefined;
-//   }
+export interface ToastType {
+    id: string;
+    title: string;
+    color: "success" | "primary" | "warning" | "danger" | undefined;
+  }
   
   export interface BreadCrumbsType {
     text: string;

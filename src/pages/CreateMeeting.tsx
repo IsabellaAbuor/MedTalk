@@ -14,11 +14,13 @@ import { meetingsRef } from "../utilis/FirebaseConfig";
 import { generateMeetingId } from "../utilis/generateMeetingId";
 import { useAppSelector } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
+import useToast from "../hooks/useToast";
 
 export default function CreateMeeting() {
 
-  useAuth()
-  const [ users ] = useFetchUsers()
+  useAuth();
+  const [ users ] = useFetchUsers();
+  const [ createToast ] = useToast();
   const uid = useAppSelector((zoom) => zoom.auth.userInfo?.uid);
   const navigate = useNavigate();
 
@@ -79,17 +81,14 @@ export default function CreateMeeting() {
           maxUsers: 1,
           status: true,
         });
+        createToast({
+          title: "One on One Meeting Created Successfully",
+          type: "success",
+        });
         navigate("/"); 
     }
   }
    
-        // createToast({
-        //   title: "One on One Meeting Created Successfully",
-        //   type: "success",
-        // });
-        // navigate("/"); 
-  
-  
   return (
     <div
     style={{
