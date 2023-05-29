@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { EuiProvider, EuiThemeColorMode, EuiThemeProvider } from "@elastic/eui";
 import { Routes, Route,  } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import ThemeSelector from "./components/ThemeSelector";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import CreateMeeting from "./pages/CreateMeeting";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
       <EuiThemeProvider modify = {overrides}>
         <Routes>
           <Route path ="/login" element={<Login />} />
+          <Route path ="/create" element={<CreateMeeting/>} />
           <Route path ="/" element={<Dashboard/>} />
           <Route path ="*" element={<Dashboard/>} />
         </Routes>

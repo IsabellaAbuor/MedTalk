@@ -6,10 +6,12 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../utilis/FirebaseConfig";
 import { changeTheme } from "../app/slices/AuthSlice";
+import { getCreateMeetingBreadCrumbs } from "../utilis/breadCrumbs";
+//import { BreadCrumbsType } from "../utils/types";
 
 function Header (){
-    const navigate = useNavigate()
-    const location = useLocation()
+    const navigate = useNavigate();
+    const location = useLocation();
     const username = useAppSelector((zoom)=> zoom.auth.userInfo?.name);
     const isDarkTheme = useAppSelector(zoom=>zoom.auth.isDarkTheme);
     const [breadCrumbs, setBreadCrumbs] = useState([
@@ -23,6 +25,20 @@ function Header (){
         signOut(firebaseAuth);
       };
     
+      useEffect(() => {
+        const { pathname } = location;
+            if (pathname === "/create")
+            setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));  
+        // if (pathname === "/") setBreadCrumbs(getDashboardBreadCrumbs(navigate));
+        // else if (pathname === "/create")
+        //   setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));
+        // else if (pathname === "/mymeetings")
+        //   setBreadCrumbs(getMyMeetingsBreadCrumbs(navigate));
+        // else if (pathname === "/meetings") {
+        //   setBreadCrumbs(getMeetingsBreadCrumbs(navigate));
+        // }
+      }, [location, navigate]);
+
       const invertTheme = () => {
         const theme = localStorage.getItem("zoom-theme");
         localStorage.setItem("zoom-theme", theme === "light" ? "dark" : "light");
@@ -48,7 +64,7 @@ function Header (){
             {username?(
                 <EuiText>
                     <h3>
-                        <EuiTextColor color="white">Hello,</EuiTextColor>
+                        <EuiTextColor color="white">Hello, </EuiTextColor>
                         <EuiTextColor color="#0089f7">{username}</EuiTextColor>
                     </h3>
                 </EuiText>
