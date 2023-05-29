@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateMeeting from "./pages/CreateMeeting";
 import { setToasts } from "./app/slices/MeetingSlice";
 import MyMeetings from "./pages/MyMeetings";
+import Meetings from "./pages/Meetings";
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path ="/login" element={<Login />} />
           <Route path ="/create" element={<CreateMeeting/>} />
           <Route path ="/mymeetings" element={<MyMeetings/>} />
+          <Route path ="/meetings" element={<Meetings/>} />
           <Route path ="/" element={<Dashboard/>} />
           <Route path ="*" element={<Dashboard/>} />
         </Routes>

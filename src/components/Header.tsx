@@ -6,8 +6,7 @@ import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextCo
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../utilis/FirebaseConfig";
 import { changeTheme } from "../app/slices/AuthSlice";
-import { getCreateMeetingBreadCrumbs } from "../utilis/breadCrumbs";
-//import { BreadCrumbsType } from "../utils/types";
+import { getCreateMeetingBreadCrumbs, getDashboardBreadCrumbs, getMeetingsBreadCrumbs, getMyMeetingsBreadCrumbs } from "../utilis/breadCrumbs";
 
 function Header (){
     const navigate = useNavigate();
@@ -29,14 +28,14 @@ function Header (){
         const { pathname } = location;
             if (pathname === "/create")
             setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));  
-        // if (pathname === "/") setBreadCrumbs(getDashboardBreadCrumbs(navigate));
-        // else if (pathname === "/create")
-        //   setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));
-        // else if (pathname === "/mymeetings")
-        //   setBreadCrumbs(getMyMeetingsBreadCrumbs(navigate));
-        // else if (pathname === "/meetings") {
-        //   setBreadCrumbs(getMeetingsBreadCrumbs(navigate));
-        // }
+        if (pathname === "/") setBreadCrumbs(getDashboardBreadCrumbs(navigate));
+        else if (pathname === "/create")
+          setBreadCrumbs(getCreateMeetingBreadCrumbs(navigate));
+        else if (pathname === "/mymeetings")
+          setBreadCrumbs(getMyMeetingsBreadCrumbs(navigate));
+        else if (pathname === "/meetings") {
+          setBreadCrumbs(getMeetingsBreadCrumbs(navigate));
+        }
       }, [location, navigate]);
 
       const invertTheme = () => {
