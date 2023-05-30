@@ -3,9 +3,9 @@ import { useAppSelector } from "../app/hooks";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { EuiCard, EuiFlexGroup, EuiFlexItem, EuiImage } from "@elastic/eui";
-import dashboard1 from "../assets/dashboard1.png";
-import dashboard2 from "../assets/dashboard2.png";
-import dashboard3 from "../assets/dashboard3.png";
+import Meeting from "../assets/Meeting.png";
+import videoconference from "../assets/videoconference.png";
+import schedule from "../assets/schedule.png";
 import Header from "../components/Header";
 
 function Dashboard() {
@@ -29,7 +29,7 @@ function Dashboard() {
           >
             <EuiFlexItem>
               <EuiCard
-                icon={<EuiImage src={dashboard1} alt="icon" size="5rem" />}
+                icon={<EuiImage src={videoconference} alt="icon" size="5rem" />}
                 title={`Create Meeting`}
                 description="Create a new meeting and invite people."
                 onClick={() => navigate("/create")}
@@ -39,7 +39,7 @@ function Dashboard() {
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiCard
-                icon={<EuiImage src={dashboard2} alt="icon" size="100%" />}
+                icon={<EuiImage src={Meeting} alt="icon" size="50%" />}
                 title={`My Meetings`}
                 description="View your created meetings."
                 onClick={() => navigate("/mymeetings")}
@@ -48,7 +48,7 @@ function Dashboard() {
             </EuiFlexItem>
             <EuiFlexItem>
               <EuiCard
-                icon={<EuiImage src={dashboard3} alt="icon" size="5rem" />}
+                icon={<EuiImage src={schedule} alt="icon" size="5rem" />}
                 title={`Meetings`}
                 description="View the meetings that you are invited to."
                 onClick={() => navigate("/meetings")}

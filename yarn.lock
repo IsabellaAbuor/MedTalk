@@ -3225,11 +3225,6 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zegocloud/zego-uikit-prebuilt@^1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@zegocloud/zego-uikit-prebuilt/-/zego-uikit-prebuilt-1.8.3.tgz#45abbf1191e302f4ace1f7e28c655661aeba1cba"
-  integrity sha512-7I7+TLLVkxs/mObtYN6+fnejfXzAOk2xjtlVHMwhghK1pUAO8t9ZNlnotTwGZugCCn6Vnalqo51RjpL4qMfdmQ==
-
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
@@ -3295,6 +3290,18 @@ agent-base@6:
   integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
   dependencies:
     debug "4"
+
+agora-rtc-sdk-ng@^4.17.2:
+  version "4.17.2"
+  resolved "https://registry.yarnpkg.com/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.17.2.tgz#acf889ce33a6e923c47730b21d1383f829647eb7"
+  integrity sha512-ErIHOYgf3R/ya3gVCCBKRw3RMdATmoM/8aUGOob4g0VHBBkVDEf9JT0RW2jQgtwm61jszWof+wo2duQDBgTfpw==
+  dependencies:
+    agora-rte-extension "^1.2.3"
+
+agora-rte-extension@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/agora-rte-extension/-/agora-rte-extension-1.2.3.tgz#979b96df0146300296f9f37212ffa67656c698ef"
+  integrity sha512-k3yNrYVyzJRoQJjaJUktKUI1XRtf8J1XsW8OzYKFqGlS8WQRMsES1+Phj2rfuEriiLObfuyuCimG6KHQCt5tiw==
 
 ajv-formats@^2.1.1:
   version "2.1.1"

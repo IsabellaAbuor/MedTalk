@@ -105,7 +105,7 @@ export default function MyMeetings() {
   },
   {
     field:"meetingId",
-    name:"Copy Link",
+    name:"CopyLink",
     width: "5%",
     render:(meetingId:string) => {
       return(

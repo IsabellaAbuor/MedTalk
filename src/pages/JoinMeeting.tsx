@@ -1,18 +1,20 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { firebaseAuth, meetingsRef } from "../utilis/FirebaseConfig";
 import useToast from "../hooks/useToast";
 import { useNavigate, useParams } from "react-router-dom";
+import { firebaseAuth, meetingsRef } from "../utilis/FirebaseConfig";
 import { getDocs, query, where } from "firebase/firestore";
 import moment from "moment";
+
 
 export default function JoinMeeting() {
   const params = useParams();
   const navigate = useNavigate();
-  const [createToast] = useToast();
-  const [isAllowed, setIsAllowed] = useState(false);
-  const [user, setUser] = useState<any>(undefined);
+  const [ createToast ] = useToast();
+  const [ isAllowed, setIsAllowed] = useState(false);
+  const [ user, setUser] = useState<any>(undefined);
   const [userLoaded, setUserLoaded] = useState(false);
+
 
   onAuthStateChanged (firebaseAuth, (currentUser)=> {
       if(currentUser){
@@ -20,7 +22,7 @@ export default function JoinMeeting() {
       }
       setUserLoaded(true);
     });
-    
+ 
       useEffect(() => {
         const getMeetingData = async () => {
           if (params.id && userLoaded) {
@@ -56,8 +58,27 @@ export default function JoinMeeting() {
         };
       
       getMeetingData();
-    }, [userLoaded])
-  return (
-    <div>JoinMeeting</div>
-  );
-}
+    }, [userLoaded]);
+    
+    
+    return isAllowed ? (
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          flexDirection: "column",
+        }}
+      >
+      </div>
+    ) : (
+      <></>
+    );
+  }
+
+
+// return(
+//   <></>
+// )
+
+
+  
