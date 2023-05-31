@@ -18,7 +18,7 @@ import {
   import MeetingDateField from "./FormComponents/MeetingDateField";
   import MeetingUserField from "./FormComponents/MeetingUserField";
   import { firebaseDB } from "../utilis/FirebaseConfig";
-import MeetingNameField from "./FormComponents/MeetingNameField";
+  import MeetingNameField from "./FormComponents/MeetingNameField";
 
   
   export default function EditFlyout({

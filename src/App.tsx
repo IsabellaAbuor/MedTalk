@@ -9,7 +9,7 @@ import CreateMeeting from "./pages/CreateMeeting";
 import { setToasts } from "./app/slices/MeetingSlice";
 import MyMeetings from "./pages/MyMeetings";
 import Meetings from "./pages/Meetings";
-import JoinMeeting from "./pages/JoinMeeting";
+import JoinMeeting from "./pages/JoinMeeting/JoinMeeting";
 
 
 function App() {

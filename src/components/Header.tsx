@@ -48,11 +48,14 @@ function Header (){
         items:[
             <Link to = "/">
                 <EuiText>
-                    <h2 style ={{padding:"0 1vw"}}>
+                  <div className ="logo"> 
+                  {/* <img src = "" */}
+                  <h2 style ={{padding:"0 1vw"}}>
                         <EuiTextColor color="#0089f7">
                             MedTalk
                         </EuiTextColor>
                     </h2>
+                  </div>
                 </EuiText>
             </Link>
         ]
