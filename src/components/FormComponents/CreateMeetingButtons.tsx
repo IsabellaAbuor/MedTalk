@@ -11,8 +11,10 @@ export default function CreateMeetingButtons({
   isEdit?: boolean;
   closeFlyout?: () => {};
 })
-{
-    const navigate = useNavigate();
+
+  {
+  const navigate = useNavigate();
+
   return (
     <EuiFlexGroup>
       <EuiFlexItem grow={false}>

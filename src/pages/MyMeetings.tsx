@@ -32,6 +32,7 @@ export default function MyMeetings() {
       setMeetings(myMeetings);
     }
   }, [userInfo?.uid]);
+  
   useEffect(() => {
     if (userInfo) getMyMeetings();
   }, [userInfo, getMyMeetings]);
@@ -58,6 +59,8 @@ export default function MyMeetings() {
   //   field:"meetingType",
   //   name:"Meeting Type"
   // },
+  // navigate(`/${meetingId}#init`); 
+  //     console.log(meetingId);
   {
     field:"meetingDate",
     name: "Meeting Date",
@@ -69,7 +72,7 @@ export default function MyMeetings() {
       if(meeting.status){
         if(meeting.meetingDate === moment().format("L")){
           return <EuiBadge color="success" >
-          <Link to={`/join/${meeting.meetingId}`} style={{ color: "black" }} >
+          <Link to={`/join/${meeting.meetingId + "#init"}`} style={{ color: "black" }} >
               Join Now
           </Link>
           </EuiBadge>
