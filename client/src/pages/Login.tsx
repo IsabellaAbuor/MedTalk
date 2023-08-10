@@ -39,7 +39,7 @@ function Login() {
             }
     };
     return (
-    <EuiProvider colorMode = "dark">
+    <EuiProvider colorMode = "light">
         <EuiFlexGroup alignItems="center" justifyContent="center" style={{ width: "100vw", height: "100vh" }}>
             <EuiFlexItem grow={false}>
                 <EuiPanel paddingSize = "xl">

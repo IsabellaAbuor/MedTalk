@@ -4,17 +4,14 @@ import React, { useEffect, useReducer, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 //import { firebaseAuth, meetingsRef } from "../../utilis/FirebaseConfig";
 //import { getDocs, query, where } from "firebase/firestore";
-import moment from "moment";
 import "./JoinMeeting.scss";
 import CallPageHeader from "../../components/JoinMeetingComponents/CallPageHeader";
 import CallPageFooter from "../../components/JoinMeetingComponents/CallPageFooter";
-//import CallPageInfo from "../../components/JoinMeetingComponents/CallPageInfo";
 import Messenger from "../../components/JoinMeetingComponents/Messenger";
 import MessageListReducer from "../../app/reducers/MessageListReducer";
 import Peer from "simple-peer";
 import { getRequest, postRequest } from "../../utilis/apiRequests";
 import io from "socket.io-client";
-import { BASE_URL, GET_CALL_ID, SAVE_CALL_ID } from "../../utilis/apiEndpoints";
 import Alert from "../../components/JoinMeetingComponents/Alerts";
 
 let peer = null;
