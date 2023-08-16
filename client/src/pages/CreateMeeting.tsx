@@ -11,11 +11,11 @@ import CreateMeetingButtons from "../components/FormComponents/CreateMeetingButt
 import { FieldErrorType, UserType } from "../utilis/types";
 import { addDoc } from "firebase/firestore";
 import { meetingsRef } from "../utilis/FirebaseConfig";
-// import { generatedMeetingId } from "../utilis/generatedMeetingId";
 import { useAppSelector } from "../app/hooks";
 import { useNavigate } from "react-router-dom";
 import useToast from "../hooks/useToast";
 import { nanoid } from "nanoid";
+import { generateMeetingID } from "../utilis/generatedMeetingId";
 
 export default function CreateMeeting() {
 
@@ -71,7 +71,8 @@ export default function CreateMeeting() {
 
   const createMeeting = async () => {
     if (!validateForm()) {
-      const meetingId: string = nanoid();
+      const meetingId = generateMeetingID();
+      //const meetingId: string = nanoid();
       
       await addDoc(meetingsRef, {
           createdBy: uid,

@@ -4,17 +4,18 @@ import { Routes, Route,  } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import ThemeSelector from "./components/ThemeSelector";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import CreateMeeting from "./pages/CreateMeeting";
 import { setToasts } from "./app/slices/MeetingSlice";
 import MyMeetings from "./pages/MyMeetings";
 import Meetings from "./pages/Meetings";
-import JoinMeeting from "./pages/JoinMeeting/JoinMeeting";
+import JoinMeeting from "./pages/JoinMeeting";
 
 
 function App() {
   const dispatch = useAppDispatch();
-  const isDarkTheme = useAppSelector(zoom=>zoom.auth.isDarkTheme);
+  const isDarkTheme = useAppSelector((zoom)=>zoom.auth.isDarkTheme);
   const [theme, setTheme] = useState<EuiThemeColorMode>("light");
   const [isInitialEffect, setIsInitialEffect] = useState(true);
   const toasts = useAppSelector((zoom) => zoom.meetings.toasts);
@@ -55,6 +56,7 @@ function App() {
       <EuiThemeProvider modify = {overrides}>
         <Routes>
           <Route path ="/login" element={<Login />} />
+          <Route path ="/signup" element={<Signup />} />
           <Route path ="/create" element={<CreateMeeting/>} />
           <Route path ="/mymeetings" element={<MyMeetings/>} />
           <Route path ="/meetings" element={<Meetings/>} />

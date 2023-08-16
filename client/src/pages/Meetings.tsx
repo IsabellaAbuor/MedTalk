@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EuiBadge, EuiBasicTable, EuiButtonIcon, EuiCopy, EuiFlexGroup, EuiFlexItem, EuiPanel } from "@elastic/eui";
 import { MeetingType } from "../utilis/types";
 import { useAppSelector } from "../app/hooks";
 import { meetingsRef } from "../utilis/FirebaseConfig";
-import { getDocs, query, where } from "firebase/firestore";
+import { getDocs, query } from "firebase/firestore";
 import useAuth from "../hooks/useAuth";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";

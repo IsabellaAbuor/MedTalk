@@ -1,16 +1,14 @@
 import { EuiButton, EuiFieldPassword, EuiFieldText, EuiFlexGroup, EuiFlexItem, EuiForm, EuiFormRow, EuiImage, EuiPanel, EuiProvider, EuiSpacer, EuiText, EuiTextColor } from "@elastic/eui";
-import React, { useState } from "react";
+import React from "react";
 import {Link, useNavigate} from "react-router-dom"
 import animation from "../assets/animation.gif";
-import logo from "../assets/logo2.png"
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged,createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { firebaseAuth, firebaseDB, userRef } from "../utilis/FirebaseConfig";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../app/slices/AuthSlice";
-import { userSchema } from "../utilis/validation"
 
-function Login() {
+function Signup() {
 
         const navigate = useNavigate();
         const dispatch = useAppDispatch();
@@ -19,7 +17,7 @@ function Login() {
             if (currentUser) navigate("/");
         });
 
-        const login = async () => {
+        const signup = async () => {
             const provider = new GoogleAuthProvider();
             const {
                 user: { displayName, email, uid },
@@ -39,18 +37,26 @@ function Login() {
             navigate("/");
             }
         
-        // const [registerEmail, setRegisterEmail] = useState ("");
-        // const [registerPassword, setRegisterPassword] = useState ("");
-        // const [loginEmail, setLoginEmail] = useState ("");
-        // const [loginPassword, setLoginPassword] = useState ("");
-        // const [isSubmitting, setIsSubmitting] = useState (false);
-        // const loginwithEmail = async () => {
-
-        // }
-        const loginwithEmail = async () => {
-            dispatch(setUser({ uid, email: email!, name: displayName! }));
-            navigate("/");
-            }
+            // const signUpWithEmailAndPassword = async () => {
+            //     try {
+            //         await createUserWithEmailAndPassword(firebaseAuth, email, password);
+            //         } catch (err){
+            //           console.error(err);
+            //         }
+            //         if (email) {
+            //             const firestoreQuery = query(userRef, where("uid", "==", uid));
+            //             const fetchedUsers = await getDocs(firestoreQuery);
+            //             if (fetchedUsers.docs.length === 0) {
+            //                 await addDoc(collection(firebaseDB, "users"), {
+            //                 uid,
+            //                 name: displayName,
+            //                 email,
+            //                 });
+            //             }
+            //       };
+            //     dispatch(setUser({ uid, email: email!, name: displayName! }));
+            //     navigate("/");
+            //     }
 
     };
     return (
@@ -63,44 +69,28 @@ function Login() {
                             <EuiImage src={animation} alt="logo" />
                         </EuiFlexItem>
                     <EuiFlexItem>
-                        {<EuiImage src={logo} alt="icon" size="50%" />}
-                        <EuiSpacer size="xs" />
-
+                        <EuiText textAlign="center" grow={false}>
+                        <h1>
+                            <EuiTextColor>Create your account</EuiTextColor>
+                        </h1>
+                        </EuiText>
+                        <EuiSpacer size="l" />
                         <EuiForm component="form">
-                        <EuiFormRow 
-                            label="Email" 
-                            helpText="Enter the email associated with your account"
-                            // isInvalid={errors.email}
-                            // error={`Please enter a valid email.`}
-                            >
+                        <EuiFormRow label="Email" helpText="Enter an email">
                             <EuiFieldText 
                             icon ="email" 
                             placeholder="user@gmail.com"
-                            // value={form.email}
-                            // onChange={(e) => handleInputChange("email", e.target.value)}
-                            // aria-label="Enter the email associated with your account."
-                            // isInvalid={errors.email}
                             />
                         </EuiFormRow>
-
-                        <EuiFormRow 
-                            label="Password" 
-                            helpText="Enter your password."
-                            // isInvalid={errors.password}
-                            // error={`Password must be at least 7 characters.`}
-                            >
+                        <EuiFormRow label="Password" helpText="Enter your password.">
                             <EuiFieldPassword
                             name ="password" 
                             placeholder="••••••••••••"
-                            // onChange={(e) => handleInputChange("password", e.target.value)}
-                            // type="dual"
-                            // aria-label="Enter your password."
-                            // isInvalid={errors.password}
-                            />
+                            ></EuiFieldPassword>
                         </EuiFormRow>
                         </EuiForm>
                         <EuiSpacer size="l" />
-                        <EuiButton type = "submit" fill > Login </EuiButton>
+                        <EuiButton fill> Create account </EuiButton>
                         <EuiSpacer size="xs" />
                         <EuiText textAlign="center" grow={false}>
                         <h5>
@@ -108,13 +98,13 @@ function Login() {
                         </h5>
                         </EuiText>
                         <EuiSpacer size="xs" />
-                        <EuiButton onClick={login}>
-                            Login with Google
+                        <EuiButton onClick={Signup}>
+                            Signup with Google
                         </EuiButton>
                         <EuiSpacer size="l" />
                         <EuiText textAlign="center" grow={false}>
                         <h5>
-                            Don't have an account?<Link to="/signup">Signup</Link>.
+                            Already have an account?<Link to="/login">Login</Link>.
                         </h5>
                         </EuiText>
                     </EuiFlexItem>
@@ -127,4 +117,4 @@ function Login() {
 }
 
 
-export default Login;
+export default Signup

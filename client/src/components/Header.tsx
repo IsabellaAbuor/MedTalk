@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
-import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiText, EuiTextColor } from "@elastic/eui";
+import { EuiButtonIcon, EuiFlexGroup, EuiFlexItem, EuiHeader, EuiImage, EuiText, EuiTextColor } from "@elastic/eui";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../utilis/FirebaseConfig";
 import { changeTheme } from "../app/slices/AuthSlice";
@@ -12,7 +12,7 @@ function Header (){
     const navigate = useNavigate();
     const location = useLocation();
     const username = useAppSelector((zoom)=> zoom.auth.userInfo?.name);
-    const isDarkTheme = useAppSelector(zoom=>zoom.auth.isDarkTheme);
+    const isDarkTheme = useAppSelector((zoom)=>zoom.auth.isDarkTheme);
     const [breadCrumbs, setBreadCrumbs] = useState([
         {
           text: "Dashboard"
@@ -49,7 +49,6 @@ function Header (){
             <Link to = "/">
                 <EuiText>
                   <div className ="logo"> 
-                  {/* <img src = "" */}
                   <h2 style ={{padding:"0 1vw"}}>
                         <EuiTextColor color="#0089f7">
                             MedTalk
@@ -97,7 +96,7 @@ function Header (){
               <EuiButtonIcon
                 onClick={invertTheme}
                 iconType="moon"
-                display="fill"
+                display="base"
                 size="s"
                 color="ghost"
                 aria-label="theme-button-dark"
@@ -151,7 +150,7 @@ const responsiveSection = [
               <EuiButtonIcon
                 onClick={invertTheme}
                 iconType="moon"
-                display="fill"
+                display="base"
                 size="s"
                 color="ghost"
                 aria-label="theme-button-dark"

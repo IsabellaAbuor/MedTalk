@@ -12,6 +12,7 @@ export default function MeetingDateField({
   return (
     <EuiFormRow label="Set Meeting Date">
       <EuiDatePicker
+        showTimeSelect
         selected={selected}
         onChange={(date) => setStartDate(date!)}
       />
