@@ -3,8 +3,6 @@ MedTalk is an End to End audio encrypted teleconsultation system used by practio
 
 The follwoing are some of the screenshoots of the project:-
 
-<img width="395" alt="loginaug" src="https://github.com/IsabellaAbuor/MedTalk/assets/70433606/4351d040-79e4-485e-91d0-ceeff43691fe">
-
 <img width="958" alt="ActualDashboard" src="https://github.com/IsabellaAbuor/MedTalk/assets/70433606/e9abb45b-2363-4288-a619-baba738a7168">
 
 <img width="960" alt="Actualcreatemeeting" src="https://github.com/IsabellaAbuor/MedTalk/assets/70433606/219056f6-de90-4719-9ad4-c1b2462d792f">
